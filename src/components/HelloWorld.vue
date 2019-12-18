@@ -1,113 +1,59 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <hr />
+    <table style="border-collapse: collapse;">
+      <thead>
+        <tr style="border: 1px solid #ccc;">
+          <th style="border: 1px solid #ccc;padding: 5px;">id</th>
+          <th style="border: 1px solid #ccc;padding: 5px;">name</th>
+          <th style="border: 1px solid #ccc;padding: 5px;">price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border: 1px solid #ccc;" v-for="(item,index) in books">
+          <td style="border: 1px solid #ccc;padding: 5px;">{{item.id}}</td>
+          <td style="border: 1px solid #ccc;padding: 5px;">{{item.name}}</td>
+          <td style="border: 1px solid #ccc;padding: 5px;">{{item.price}}</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="border: 1px solid #ccc;padding: 5px;">总价格</td>
+          <td style="border: 1px solid #ccc;padding: 5px;">{{totalPrice}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: "HelloWorld",
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: "Welcome to Your Vue.js App",
+      books: [
+        { id: 110, name: "javaScript", price: 110 },
+        { id: 120, name: "Jquery", price: 12 },
+        { id: 130, name: "Vue", price: 34 },
+        { id: 130, name: "Vue", price: 34 },
+        { id: 130, name: "Vue", price: 34 },
+        { id: 140, name: "HTMl", price: 53 }
+      ]
+    };
+  },
+  computed: {
+    totalPrice: function() {
+      let result = 0;
+      for (let i = 0; i < this.books.length; i++) {
+        result += this.books[i].price;
+      }
+      return result;
     }
-  }
-}
+  },
+  methods: {}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
